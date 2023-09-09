@@ -38,14 +38,80 @@ header h1 {
 }
 
 /* MAIN */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-gray);
+  text-transform: uppercase;
+}
+
+.player-turn {
+  margin-bottom: 4em;
+}
+
 .gameboard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: 454px;
-  min-height: 454px;
+  width: 350px;
+  min-height: 350px;
   gap: 1.7em;
 }
+
+.gameboard .field {
+  background: var(--darkest-purple);
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 3.5 rem;
+  outline: 2px solid var(--bluish);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.summary {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 5em;
+  width: 500px;
+}
+
+.summary-container {
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: var(--black);
+}
+
+.summary-container:first-child {
+  background: var(--pink);
+}
+
+.summary-container:nth-child(2) {
+  background: var(--blue-gray);
+}
+
+.summary-container:last-child {
+  background: var(--bluish);
+}
+
+button.restart-btn {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 15px 50px;
+  background-color: var(--purple);
+  border-style: none;
+  color: var(--white);
+  text-transform: uppercase;
+}
+/* MODAL */
+.disabled {
+  display: none;
+}
+
 /* FOOTER */
 
 footer {
@@ -53,7 +119,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: var(--darkest-purple);
+  color: var(--blue-gray);
   width: 100%;
   height: 10vh;
   margin-top: auto;
@@ -61,5 +127,5 @@ footer {
 
 .fa-github {
   font-size: 20px;
-  color: var(--darkest-purple);
+  color: var(--blue-gray);
 }
