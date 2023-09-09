@@ -1,13 +1,13 @@
 :root {
   --blue-gray: #dbd8e3;
-  --purple: #5c5470;
-  --dark-purple: #352f44;
-  --darkest-purple: #2a2438;
   --black: #1a1c1e;
   --white: #f2f2f2;
-  --green: #7dd87d;
-  --yellow: #f9b248;
-  --red: #be3144;
+  --purple: #5c5470;
+  --darkest-purple: #2a2438;
+  --light-pink: #ffcbcb;
+  --pink: #f76b8a;
+  --bluish: #66bfbf;
+  --true-navy: #132743;
 }
 
 * {
@@ -17,206 +17,34 @@
 }
 
 *:not(i) {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Righteous', cursive, sans-serif;
 }
 
 body {
-  background-color: var(--blue-gray);
   height: 100vh;
   width: 100vw;
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
+  background-color: var(--true-navy);
 }
 
 /* HEADER */
-header {
-  height: 13vh;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header-container img {
-  width: 40px;
-  height: 40px;
-}
-
-button.add-book {
-  font-size: 2rem;
-  border-radius: 50%;
-  border: none;
-  height: 40px;
-  width: 40px;
-  background: var(--dark-purple);
-  color: var(--blue-gray);
-  transition: transform 0.6s ease-in-out;
-}
-
-button.add-book:hover {
-  transform: rotate(180deg) scale(1.1);
-}
-
-/* SECTION */
-
-.library-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 30px;
-  width: fit-content;
-  line-height: 1.5rem;
-  background-color: var(--white);
-  border: solid 3px var(--darkest-purple);
-  border-radius: 8px;
-  padding: 10px;
-  column-gap: 20px;
-  font-size: 1rem;
-}
-
-.library-stats > h2 {
-  grid-column: 1 / -1;
-  justify-self: center;
-  margin-bottom: 5px;
-}
-
-.library-stats dl {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-/* MAIN */
-main {
+header h1 {
+  font-size: 4rem;
+  color: var(--pink);
+  text-shadow: 4px 4px var(--bluish);
+  text-align: center;
   padding: 30px;
 }
 
-.bookshelf-grid {
+/* MAIN */
+.gameboard {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  margin-top: 2rem;
-  gap: 20px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 1.3rem;
-  background-color: var(--dark-purple);
-  color: var(--white);
-  line-height: 1.5;
-  border-radius: 5px;
-  padding: 20px;
-  height: 250px;
-  width: 250px;
-}
-
-.delete-button {
-  background-color: var(--dark-purple);
-  color: var(--white);
-  font-size: 1.3rem;
-  border-style: none;
-  align-self: flex-end;
-  cursor: pointer;
-}
-
-.author {
-  font-size: 1rem;
-}
-
-.status-option {
-  margin-top: auto;
-  border-style: none;
-  width: 75%;
-}
-
-.read {
-  background-color: var(--green);
-}
-
-.in-progress {
-  background-color: var(--yellow);
-}
-
-.to-read {
-  background-color: var(--red);
-}
-
-/* MODAL */
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.overlay.active {
-  display: block;
-}
-
-.modal {
-  position: fixed;
-  z-index: 100;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  padding: 25px;
-  border-radius: 15px;
-  background-color: var(--darkest-purple);
-  color: var(--white);
-  text-align: center;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 0.2s ease-in-out;
-}
-
-.modal.active {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.add-book-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-form > h3 {
-  padding-bottom: 15px;
-  align-self: center;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.submit-btn {
-  background-color: var(--green);
-  color: var(--black);
-  width: 40%;
-  align-self: flex-end;
-  padding: 12px 8px;
-  border-radius: 15px;
-  border-style: none;
-  margin-top: 30px;
-  cursor: pointer;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 454px;
+  min-height: 454px;
+  gap: 1.7em;
 }
 /* FOOTER */
 

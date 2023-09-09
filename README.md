@@ -1,4 +1,4 @@
-# The Odin Project - Library
+# The Odin Project - Tic Tac Toe
 
 Bookshelf is a web app that allows you to keep track of your books read, currently reading, and yet to read. It was built using Vanilla JavaScript, HTML, and CSS. Building this app, I was able to practice using ES6 Classes, different DOM manipulation methods, and how to use data attributes.
 
