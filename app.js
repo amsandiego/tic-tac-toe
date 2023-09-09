@@ -33,8 +33,7 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
-  const console = document.querySelector('main'),
-    resultModal = document.querySelector('.result-modal'),
+  const resultModal = document.querySelector('.result-modal'),
     quitGameBtn = document.querySelector('.reset-btn'),
     nextRoundBtn = document.querySelector('.continue-btn'),
     fieldElements = document.querySelectorAll('.field'),
@@ -138,11 +137,7 @@ const gameController = (() => {
 
   const playRound = (fieldIndex) => {
     gameBoard.setField(fieldIndex, getCurrentPlayerSign());
-    if (checkWinner(fieldIndex)) {
-      isOver = true;
-      result = true;
-      displayController.setBoardColor();
-    }
+    checkWinner(fieldIndex);
 
     if (result) {
       isOver = true;
@@ -174,12 +169,25 @@ const gameController = (() => {
       [2, 4, 6],
     ];
 
+    const triggerWin = (possibleCombination) => {
+      if (
+        possibleCombination.every((element) => {
+          gameBoard.getField(element) === getCurrentPlayerSign();
+        })
+      ) {
+        result = true;
+        displayController.setBoardColor(possibleCombination);
+      }
+    };
+
     return winningCombinations
       .filter((combination) => combination.includes(fieldIndex))
       .some((possibleCombination) =>
-        possibleCombination.every(
-          (index) => gameBoard.getField(index) === getCurrentPlayerSign()
-        )
+        possibleCombination.every((index) => {
+          gameBoard.getField(index) === getCurrentPlayerSign()
+            ? triggerWin(possibleCombination)
+            : false;
+        })
       );
   };
 

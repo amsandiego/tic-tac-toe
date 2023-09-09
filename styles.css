@@ -91,6 +91,13 @@ main {
   background-image: url(./assets/o-outline.svg);
 }
 
+[data-field-state='set-x'] {
+  background-image: url(./assets/x-solid.svg) !important;
+}
+[data-field-state='set-o'] {
+  background-image: url(./assets/o-solid.svg) !important;
+}
+
 .won-x {
   background: var(--pink);
 }
