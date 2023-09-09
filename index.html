@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" href="./tic-tac-toe.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./assets/tic-tac-toe.png" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
       rel="stylesheet"
@@ -22,37 +22,35 @@
     </header>
     <main>
       <section class="player-turn">
-        <h2 class="player-turn-display" data-field-turn="">
-          <div class="get-turn-sign">Turn</div>
-        </h2>
+        <h2 class="message" id="message">Player X's turn</h2>
       </section>
       <section class="gameboard">
         <div class="field" data-index="0" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="1" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="2" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="3" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="4" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="5" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="6" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="7" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
         <div class="field" data-index="8" role="button">
-          <div class="state" data-field-state="" data-field-turn=""></div>
+          <div class="state" data-field-state="" data-field-turn="turn-x"></div>
         </div>
       </section>
       <section class="summary">
@@ -70,7 +68,7 @@
         </div>
       </section>
       <section class="restart">
-        <button class="restart-btn">Restart</button>
+        <button role="button" class="restart-btn">Restart</button>
       </section>
     </main>
 
