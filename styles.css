@@ -106,6 +106,16 @@ main {
   background: var(--bluish);
 }
 
+[role='button'] {
+  transition: all 0.3s ease;
+}
+
+[class*='clicked'] {
+  transform: scale(0.95) translateY(6px);
+  box-shadow: 0 0 0, inset 0 2px 10px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.2);
+}
+
 .summary {
   display: grid;
   gap: 15px;
@@ -135,6 +145,7 @@ main {
 }
 
 button.restart-btn {
+  font-size: 1rem;
   margin-top: 10px;
   border-radius: 10px;
   padding: 15px 50px;
@@ -146,9 +157,69 @@ button.restart-btn {
 
 /* MODAL */
 .disabled {
-  display: none;
+  display: none !important;
 }
 
+.result-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--darkest-purple);
+  color: var(--white);
+  height: max-content;
+  text-align: center;
+  width: 500px;
+  outline: solid 2px var(--white);
+  border-radius: 5px;
+  padding: 50px;
+  text-transform: uppercase;
+  display: grid;
+  place-items: center;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.reset-btn {
+  width: 120px;
+  background: var(--purple);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--black);
+}
+
+.continue-btn {
+  width: 120px;
+  background: var(--light-pink);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--black);
+}
+
+.get-winner-sign {
+  width: 40px;
+  height: 40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-field-turn='turn-x'] .get-winner-sign {
+  background-image: url(./assets/x-solid.svg);
+}
+[data-field-turn='turn-o'] .get-winner-sign {
+  background-image: url(./assets/o-solid.svg);
+}
+[data-field-turn=''] .get-winner-sign {
+  display: none;
+}
 /* FOOTER */
 
 footer {

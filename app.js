@@ -40,6 +40,7 @@ const displayController = (() => {
     fieldElementsStates = document.querySelectorAll('.state'),
     restartBtn = document.querySelector('.restart-btn'),
     scoreDisplayElements = document.querySelectorAll('.display-score');
+  const messageElement = document.getElementById('message');
 
   let playerXScore = 0,
     playerOScore = 0,
@@ -64,10 +65,39 @@ const displayController = (() => {
         fieldState == 'set-o'
       )
         return;
+
       gameController.playRound(parseInt(e.target.parentElement.dataset.index));
       updateGameBoard();
       activateBtn(e.target.parentElement);
     });
+  });
+
+  restartBtn.addEventListener('click', (e) => {
+    restartGame();
+    activateBtn(e.target);
+  });
+
+  nextRoundBtn.addEventListener('click', (e) => {
+    activateBtn(e.target);
+    setTimeout(() => {
+      e.target.parentElement.parentElement.classList.add('disabled');
+      tie = false;
+      restartGame();
+    }, 500);
+  });
+
+  quitGameBtn.addEventListener('click', (e) => {
+    activateBtn(e.target);
+    playerOScore = 0;
+    playerXScore = 0;
+    tiedMatches = 0;
+    tie = false;
+
+    updateScoreBoard('reset');
+    setTimeout(() => {
+      restartGame();
+      e.target.parentElement.parentElement.classList.add('disabled');
+    }, 500);
   });
 
   const updateGameBoard = () => {
@@ -83,6 +113,13 @@ const displayController = (() => {
     document.querySelectorAll('[data-field-turn]').forEach((element) => {
       element.dataset.fieldTurn = `turn-${gameController.getCurrentPlayerSign()}`;
     });
+
+    if (tie === true) {
+      document.querySelectorAll('[data-field-turn]')[9].dataset.fieldTurn = '';
+      document.querySelectorAll(
+        '[data-field-turn]'
+      )[9].children[1].textContent = "It's a Tie!";
+    }
   };
 
   const setBoardColor = (boardElements) => {
@@ -124,7 +161,23 @@ const displayController = (() => {
     }, 1000);
   };
 
-  return { setBoardColor, updateScoreBoard };
+  const restartGame = () => {
+    gameBoard.reset();
+    gameController.reset();
+    removeBoardColor(fieldElements);
+    updateGameBoard();
+    setMessageElement("Player X's turn");
+  };
+
+  const removeBoardColor = (boardElements) => {
+    boardElements.forEach((element) => (element.className = 'field'));
+  };
+
+  const setMessageElement = (message) => {
+    messageElement.textContent = message;
+  };
+
+  return { setBoardColor, updateScoreBoard, setMessageElement };
 })();
 
 const gameController = (() => {
@@ -151,6 +204,9 @@ const gameController = (() => {
     }
 
     round++;
+    displayController.setMessageElement(
+      `Player ${getCurrentPlayerSign().toUpperCase()}'s turn`
+    );
   };
 
   const getCurrentPlayerSign = () => {
@@ -169,20 +225,21 @@ const gameController = (() => {
       [2, 4, 6],
     ];
 
-    const triggerWin = (possibleCombination) => {
+    const triggerWin = (combination) => {
       if (
-        possibleCombination.every((element) => {
-          gameBoard.getField(element) === getCurrentPlayerSign();
-        })
+        combination.every(
+          (element = index) =>
+            gameBoard.getField(element) === getCurrentPlayerSign()
+        )
       ) {
         result = true;
-        displayController.setBoardColor(possibleCombination);
+        displayController.setBoardColor(combination);
       }
     };
 
     return winningCombinations
       .filter((combination) => combination.includes(fieldIndex))
-      .some((possibleCombination) =>
+      .some((possibleCombination = possibilities) =>
         possibleCombination.every((index) => {
           gameBoard.getField(index) === getCurrentPlayerSign()
             ? triggerWin(possibleCombination)
