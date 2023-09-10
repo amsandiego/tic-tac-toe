@@ -98,12 +98,19 @@ main {
   background-image: url(./assets/o-solid.svg) !important;
 }
 
-.won-x {
+.field.won-x {
   background: var(--pink);
 }
 
-.won-o {
+.field.won-o {
   background: var(--bluish);
+}
+
+.won-x > [data-field-state='set-x'] {
+  background-image: url(./assets/x-transparent.svg) !important;
+}
+.won-o > [data-field-state='set-o'] {
+  background-image: url(./assets/o-transparent.svg) !important;
 }
 
 [role='button'] {
@@ -178,6 +185,11 @@ button.restart-btn {
   place-items: center;
 }
 
+.result-modal-container {
+  display: grid;
+  place-items: center;
+}
+
 .actions-container {
   display: flex;
   justify-content: center;
@@ -209,6 +221,7 @@ button.restart-btn {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  margin-bottom: 20px;
 }
 
 [data-field-turn='turn-x'] .get-winner-sign {

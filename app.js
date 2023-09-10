@@ -39,8 +39,8 @@ const displayController = (() => {
     fieldElements = document.querySelectorAll('.field'),
     fieldElementsStates = document.querySelectorAll('.state'),
     restartBtn = document.querySelector('.restart-btn'),
-    scoreDisplayElements = document.querySelectorAll('.display-score');
-  const messageElement = document.getElementById('message');
+    scoreDisplayElements = document.querySelectorAll('.display-score'),
+    messageElement = document.getElementById('message');
 
   let playerXScore = 0,
     playerOScore = 0,
@@ -119,6 +119,10 @@ const displayController = (() => {
       document.querySelectorAll(
         '[data-field-turn]'
       )[9].children[1].textContent = "It's a Tie!";
+    } else {
+      document.querySelectorAll(
+        '[data-field-turn]'
+      )[9].children[1].textContent = 'Wins this round!';
     }
   };
 
@@ -131,12 +135,12 @@ const displayController = (() => {
 
     if (signArray.includes('x') === true) {
       boardElements.forEach((el) => {
-        fieldElements[el].classList.add('.won-x');
+        fieldElements[el].classList.add('won-x');
       });
       updateScoreBoard('x');
     } else {
       boardElements.forEach((el) => {
-        fieldElements[el].classList.add('.won-o');
+        fieldElements[el].classList.add('won-o');
       });
       updateScoreBoard('o');
     }
@@ -194,12 +198,14 @@ const gameController = (() => {
 
     if (result) {
       isOver = true;
+      displayController.setMessageElement('');
       return;
     }
 
     if (round === 9) {
       displayController.updateScoreBoard('tie');
       isOver = true;
+      displayController.setMessageElement('');
       return;
     }
 
