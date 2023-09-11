@@ -197,7 +197,7 @@ button.restart-btn {
 .actions-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 1em;
   margin-top: 20px;
   cursor: pointer;
@@ -277,6 +277,14 @@ footer {
 
   .result-modal {
     width: 90%;
-    height: 25%;
+    height: 40%;
+  }
+
+  .continue-btn {
+    width: 90px;
+  }
+
+  .reset-btn {
+    width: 90px;
   }
 }
